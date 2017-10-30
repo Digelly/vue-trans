@@ -1,7 +1,7 @@
 {
   "name": "vue-trans",
-  "version": "0.0.1",
-  "description": "A simple filter to *use Symfony translations in vue",
+  "version": "0.0.2",
+  "description": "A simple filter to provide a similar use of translations as with the Symfony trans filter",
   "main": "dist/vue-trans.js",
   "scripts": {
     "build": "webpack --progress --colors --env.env=prod",
