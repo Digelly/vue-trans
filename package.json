@@ -4,7 +4,8 @@
   "description": "A simple filter to *use Symfony translations in vue",
   "main": "dist/vue-trans.js",
   "scripts": {
-    "build": "webpack --progress --colors --env.env=prod"
+    "build": "webpack --progress --colors --env.env=prod",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "eslint-loader": "^1.9.0",
     "eslint-plugin-html": "^3.2.2",
     "eslint-plugin-import": "^2.8.0",
+    "jest": "^21.2.1",
     "webpack": "^3.8.1"
   },
   "dependencies": {}
