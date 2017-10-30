@@ -1,5 +1,9 @@
 # vue-trans
 
+[![Build Status](https://travis-ci.org/Trekels/vue-trans.svg?branch=master)]()
+[![npm](https://img.shields.io/npm/v/vue-trans.svg?maxAge=2592000?style=flat-square)]()
+[![npm](https://img.shields.io/npm/dt/vue-trans.svg?maxAge=2592000?style=flat-square)]()
+
 This is a simple vue filter to provide a similar way of using translations in vue as one would in
 twig templates with the Symfony `trans` filter. The filter not bound to the Symfony framework so can be used with others as well.
 
