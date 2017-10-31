@@ -26,7 +26,7 @@ import transFilter from 'vue-trans';
 var transFilter = require('vue-trans');
 
 // Add to vue
-Vue.use('vue')
+Vue.use(transFilter);
 ```
 
 Or download [this file](https://raw.githubusercontent.com/trekels/vue-trans/master/dist/vue-trans.js) and include it with a script tag. When including the file like this the filter will be automatically installed. Make sure to include it after the Vue script !
