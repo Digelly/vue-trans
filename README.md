@@ -5,12 +5,12 @@
 [![npm](https://img.shields.io/npm/dt/vue-trans.svg?maxAge=2592000?style=flat-square)]()
 
 This is a simple vue filter to provide a similar way of using translations in vue as one would in
-twig templates with the Symfony `trans` filter. The filter not bound to the Symfony framework so can be used with others as well.
+twig templates with the Symfony `trans` filter. The filter is not bound to the Symfony framework so can be used as a stand alone package as well.
 
 ## Installation and configuration
 
 Install the filter using `npm` or `yarn`:
-```
+``` javascript
 // Npm...
 npm install vue-trans --save
 // Yarn...
@@ -19,7 +19,7 @@ yarn add vue-trans
 
 next you will have to `import` or `require` the filter and add it to Vue.
 
-```
+``` javascript
 // import
 import transFilter from 'vue-trans';
 // require
@@ -30,18 +30,19 @@ Vue.use(transFilter);
 ```
 
 Or download [this file](https://raw.githubusercontent.com/trekels/vue-trans/master/dist/vue-trans.js) and include it with a script tag. When including the file like this the filter will be automatically installed. Make sure to include it after the Vue script !
-```
+
+``` javascript
+<script src="vue.js"></script>
 <script src="vue-trans.js"></script>
 ```
 
 ## Filter usage
 
-The filter usage is fairly straight forward, only on thing that needs to be considered are the translations them self. We will have
-to expose them to the frontend by setting a global object holding the translations by `key/value`.
+The filter usage is fairly straight forward. The only catch are the translations, we will have to expose them to the frontend by setting a global object holding the translations by `key/value`.
 So the filter can use it as source.
 
-```
-// Exposing the translations (base.html.twig)
+``` javascript
+// Exposing the translations (base.html.twig or index.html)
 
 <script>
 window.translations = {
@@ -56,7 +57,7 @@ window.translations = {
 
 Now the translation filter can be used to lookup the translations by the exposed keys.
 
-```
+``` javascript
 // Some vue component
 
 {{ 'app.tile' | trans }}
@@ -64,3 +65,31 @@ Now the translation filter can be used to lookup the translations by the exposed
 
 ## Translate with context
 
+The real power is in the translations with context. Sometimes you need to put in values
+into the translated sentence. Since this value is not available in the twig env on render
+or when you are writing the translations you can set a placeholder.
+
+A placeholder must be pre ans suffixed with `%`'s like: `%placeholder_here%`
+
+You can then pass a context to the trans filter as second param to be applied on the translation. The context is a POJO (plain old javascript object). The properties have
+to match the placeholders name.
+
+Example:
+
+``` javascript
+window.translations = {
+  'app.version': 'version %versionNumber%'
+};
+
+
+// Somewhere in the app...
+
+const context = { versionNumber: 1 }
+
+{{ 'app.version' | trans(context) }} // Result: "version 1"
+```
+
+## Upcoming
+
+  - Provide config to edit context pre and suffix.
+  - Pass context as obj or array (if array just parse in order)
