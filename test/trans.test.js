@@ -64,8 +64,8 @@ describe('Global translations object provided', () => {
         .toBe('3 apples');
     });
     it('Should be able to parse multiple choices with context parameters', () => {
-      expect(transchoice('multiple_choice', { count: '3', param: 'pear' }))
-        .toBe('3 apples');
+      expect(transchoice('multiple_choice_with_param', { count: '3', param: 'pear' }))
+        .toBe('3 pears');
     });
   });  
 });
