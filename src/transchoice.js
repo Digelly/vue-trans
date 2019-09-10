@@ -1,5 +1,7 @@
 import filter from "./filter.js";
 
+const exactPattern = /^\{(\d+)\}(.*)/;
+const rangePattern = /(\[|\])(\d+|Inf), ?(\d+|Inf)(\[|\])(.+)/;
 // a typical multiple choice pattern looks like:
 // "{0} no apples|{1} one apple|]1, Inf] A lot of apples"
 export default (key, context) => {
@@ -9,8 +11,6 @@ export default (key, context) => {
     translation = window.translations[key];
   }
 
-  const exactPattern = /^\{(\d+)\}(.*)/;
-  const rangePattern = /(\[|\])(\d+|Inf), ?(\d+|Inf)(\[|\])(.+)/;
   // match groups for `rangePattern`
   // match 0: the entire translation string
   // match 1: open or closed range ] or [ i.e. exlusive or inclusive start
