@@ -1,4 +1,4 @@
-import filter from "./filter.js"
+import filter from "./filter.js";
 
 // a typical multiple choice pattern looks like:
 // "{0} no apples|{1} one apple|]1, Inf] A lot of apples"
