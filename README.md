@@ -113,7 +113,7 @@ const context = { count: 5 }
 
 `transchoice` can even be used alongside other parameters:
 
-```
+```javascript
 window.translations = {
   'app.generic': '{0}No %item%|{1} 1 %item%|]1,Inf[%count% %items%'
 };
