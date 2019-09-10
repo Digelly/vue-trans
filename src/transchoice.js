@@ -1,7 +1,5 @@
 import filter from './filter';
 
-const exactPattern = /^\{(\d+)\}(.*)/;
-
 // match groups for `rangePattern`
 // match 0: the entire translation string
 // match 1: open or closed range ] or [ i.e. exlusive or inclusive start
@@ -10,6 +8,7 @@ const exactPattern = /^\{(\d+)\}(.*)/;
 // match 4: open or closed range ] or [ i.e. inclusive or exlusive end
 // match 5: the contents of the template (i.e. exclude type preamble)
 const rangePattern = /(\[|\])(\d+|Inf), ?(\d+|Inf)(\[|\])(.+)/;
+const exactPattern = /^\{(\d+)\}(.*)/;
 
 // a typical multiple choice pattern looks like:
 // '{0} no apples|{1} one apple|]1, Inf] A lot of apples'
