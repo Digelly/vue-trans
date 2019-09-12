@@ -1,5 +1,4 @@
 import trans from '../src/filter';
-import transchoice from '../src/transchoice';
 
 /* eslint-disable */
 
@@ -60,11 +59,11 @@ describe('Global translations object provided', () => {
         .toBe('context: test test');
     });
     it('Should be able to parse multiple choices', () => {
-      expect(transchoice('multiple_choice', { count: '3' }))
+      expect(trans('multiple_choice', { count: '3' }))
         .toBe('3 apples');
     });
     it('Should be able to parse multiple choices with context parameters', () => {
-      expect(transchoice('multiple_choice_with_param', { count: '3', param: 'pear' }))
+      expect(trans('multiple_choice_with_param', { count: '3', param: 'pear' }))
         .toBe('3 pears');
     });
   });  

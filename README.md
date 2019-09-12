@@ -7,8 +7,7 @@
 This is a simple vue filter to provide a similar way of using translations in vue as one would in
 twig templates with the Symfony `trans` filter. The filter is not bound to the Symfony framework so can be used as a stand alone package as well.
 
-Also implemented is the `transchoice` filter from Symfony. Note: if you use it, you need to supply `count` as a
-parameter.
+Also implemented is the multiple choice syntax using a `count` parameter from Symfony, detailed more downbelow.
 
 ## Installation and configuration
 
@@ -92,26 +91,25 @@ const context = { versionNumber: 1 }
 {{ 'app.version' | trans(context) }} // Result: "version 1"
 ```
 
-## Pluralize easily with `transchoice`
-Using `transchoice` you can add inflection or pluralize effortlessly.
+## Pluralize easily by adding `count`
+By adding the context parameter `count`  you can add inflection or pluralize effortlessly.
 
-``` javascript
+```javascript
 window.translations = {
   'app.changes': '{0}No changes|{1} 1 change|]1,Inf[%count% changes'
 };
 
 
 // Somewhere in the app...
-
 const context = { count: 1 }
-{{ 'app.changes' | transchoice(context) }} // Result: "1 change"
+{{ 'app.changes' | trans(context) }} // Result: "1 change"
 
 // or if we increase the count
 const context = { count: 5 }
-{{ 'app.changes' | transchoice(context) }} // Result: "5 changes"
+{{ 'app.changes' | trans(context) }} // Result: "5 changes"
 ```
 
-`transchoice` can even be used alongside other parameters:
+Combine `count` with other parameters:
 
 ```javascript
 window.translations = {
@@ -120,12 +118,11 @@ window.translations = {
 
 
 // Somewhere in the app...
-
 const context = { count: 1, item: "line" }
-{{ 'app.generic' | transchoice(context) }} // Result: "1 line"
+{{ 'app.generic' | trans(context) }} // Result: "1 line"
 
 const context = { count: 5, item: "line" }
-{{ 'app.generic' | transchoice(context) }} // Result: "5 lines"
+{{ 'app.generic' | trans(context) }} // Result: "5 lines"
 ```
 
 ## Upcoming
