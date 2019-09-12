@@ -59,6 +59,10 @@ describe('Global translations object provided', () => {
         .toBe('context: test test');
     });
     it('Should be able to parse multiple choices', () => {
+      expect(trans('multiple_choice', { count: '1' }))
+        .toBe('one apple');
+      expect(trans('multiple_choice', { count: '0' }))
+        .toBe('no apples');
       expect(trans('multiple_choice', { count: '3' }))
         .toBe('3 apples');
     });

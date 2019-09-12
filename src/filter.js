@@ -27,7 +27,7 @@ const trans = (translation, context) => {
 // match 4: open or closed range ] or [ i.e. inclusive or exlusive end
 // match 5: the contents of the template (i.e. exclude type preamble)
 const rangePattern = /(\[|\])(\d+|Inf), ?(\d+|Inf)(\[|\])(.+)/;
-const exactPattern = /^\{(\d+)\}(.*)/;
+const exactPattern = /\{(\d+)\}(.*)/;
 
 // a typical multiple choice pattern looks like:
 // '{0} no apples|{1} one apple|]1, Inf] A lot of apples'
@@ -41,7 +41,7 @@ const transchoice = (translation, context) => {
     const exactMatch = t.match(exactPattern);
     if (exactMatch) {
       // we found the correct exact match
-      if (exactMatch[1] === choice) {
+      if (parseInt(exactMatch[1], 10) === choice) {
         // eslint-disable-next-line prefer-destructuring
         result = exactMatch[2];
       }
