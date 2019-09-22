@@ -1,16 +1,17 @@
-let path = require('path');
-let webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const friendlyFormatter = require('eslint-friendly-formatter');
 
 module.exports = {
   context: __dirname,
   entry: {
-    'vue-trans': './src/index.js'
+    'vue-trans': './src/index.js',
   },
   output: {
     path: path.join(__dirname, './dist'),
     filename: '[name].js',
     library: 'vue-trans',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -20,33 +21,33 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['es2015', 'stage-0']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.(js)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
         options: {
-          formatter: require('eslint-friendly-formatter')
-        }
+          formatter: friendlyFormatter,
+        },
       },
-    ]
+    ],
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
       mangle: {
         screw_ie8: true,
-        keep_fnames: true
+        keep_fnames: true,
       },
       compress: {
         screw_ie8: true,
-        warnings: false
+        warnings: false,
       },
       comments: false,
-      sourceMap: true
-    })
-  ]
+      sourceMap: true,
+    }),
+  ],
 };
