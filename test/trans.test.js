@@ -21,6 +21,8 @@ describe('Global translations object provided', () => {
       'context_key': 'context: %value%',
       'multiple_context_keys': 'context: %value% %value_two%',
       'multiple_similar_keys': 'context: %value% %value%',
+      'multiple_choice': '{0}no apples|{1}one apple|]1, Inf]%count% apples',
+      'multiple_choice_with_param': '{0}no %param%|{1}one %param%|]1, Inf]%count% %param%s'
     };
   });
 
@@ -55,6 +57,18 @@ describe('Global translations object provided', () => {
     it('Should be able to parse multiple similar context parameters', () => {
       expect(trans('multiple_similar_keys', { value: 'test' }))
         .toBe('context: test test');
+    });
+    it('Should be able to parse multiple choices', () => {
+      expect(trans('multiple_choice', { count: '1' }))
+        .toBe('one apple');
+      expect(trans('multiple_choice', { count: '0' }))
+        .toBe('no apples');
+      expect(trans('multiple_choice', { count: '3' }))
+        .toBe('3 apples');
+    });
+    it('Should be able to parse multiple choices with context parameters', () => {
+      expect(trans('multiple_choice_with_param', { count: '3', param: 'pear' }))
+        .toBe('3 pears');
     });
   });  
 });
