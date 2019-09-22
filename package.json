@@ -1,6 +1,6 @@
 {
   "name": "vue-trans",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "A filter to provide similar use of translations as with Symfony | trans",
   "main": "dist/vue-trans.js",
   "scripts": {
