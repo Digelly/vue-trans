@@ -1,0 +1,11 @@
+name: Quality
+
+on: [push]
+
+jobs:
+    quality_pipeline:
+        name: Js code quality checks
+        runs-on: ubuntu-latest
+        steps:
+            - name: Jest
+              uses: stefanoeb/jest-action@master
