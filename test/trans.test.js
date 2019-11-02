@@ -70,5 +70,5 @@ describe('Global translations object provided', () => {
       expect(trans('multiple_choice_with_param', { count: '3', param: 'pear' }))
         .toBe('3 pears');
     });
-  });  
+  });
 });

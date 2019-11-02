@@ -15,4 +15,4 @@ if (typeof window !== 'undefined' && window.Vue) {
   Vue.install(install);
 }
 
-module.exports = install;
+export default install;

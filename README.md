@@ -24,8 +24,6 @@ next you will have to `import` or `require` the filter and add it to Vue.
 ``` javascript
 // import
 import transFilter from 'vue-trans';
-// require
-var transFilter = require('vue-trans');
 
 // Add to vue
 Vue.use(transFilter);
